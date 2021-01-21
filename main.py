@@ -1,6 +1,7 @@
 
 import streamlit as st
 import nltk
+nltk.download()
 import re
 
 st.title("Text Summarizer")
