@@ -3,6 +3,7 @@ import streamlit as st
 import nltk
 nltk.download('punkt', 'stopwords', 'tokenizers')
 import re
+import sys
 
 st.title("Text Summarizer")
 
@@ -20,6 +21,7 @@ else:
 
     # Tokenization
     sentence_list = nltk.sent_tokenize(article_text)
+    sys.exit()
 
     # Find Weighted Frequency of Occurrence
     stopwords = nltk.corpus.stopwords.words('english')
