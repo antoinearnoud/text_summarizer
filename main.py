@@ -24,7 +24,7 @@ else:
 
     # Find Weighted Frequency of Occurrence
     stopwords = nltk.corpus.stopwords.words('english')
-    sys.exit()
+
     word_frequencies = {}
     for word in nltk.word_tokenize(formatted_article_text):
         if word not in stopwords:
