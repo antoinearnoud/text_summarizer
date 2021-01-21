@@ -1,7 +1,7 @@
 
 import streamlit as st
 import nltk
-nltk.download('punkt')
+nltk.download('punkt', 'stopwords', 'tokenizers')
 import re
 
 st.title("Text Summarizer")
