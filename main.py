@@ -1,7 +1,9 @@
 
 import streamlit as st
 import nltk
-nltk.download('punkt', 'stopwords', 'tokenizers')
+#nltk.download(['punkt', 'stopwords', 'tokenizers'])
+#nltk.download(info_or_id="popular", download_dir="nltk")
+nltk.download('stopwords', download_dir="nltk")
 import re
 import sys
 
