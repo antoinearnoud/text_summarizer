@@ -1,6 +1,6 @@
 
 import streamlit as st
-from nltk_download_utils import *
+from nltk_download_utils import * # see: https://blog.jcharistech.com/2020/12/14/deploying-nlp-apps-on-streamlit-sharing/
 #nltk.download(['punkt', 'stopwords', 'tokenizers'])
 #nltk.download(info_or_id="popular", download_dir="nltk")
 #nltk.download('stopwords', download_dir="nltk")
