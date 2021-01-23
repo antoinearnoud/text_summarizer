@@ -1,4 +1,3 @@
-
 import streamlit as st
 from nltk_download_utils import * # see: https://blog.jcharistech.com/2020/12/14/deploying-nlp-apps-on-streamlit-sharing/
 #nltk.download(['punkt', 'stopwords', 'tokenizers'])
@@ -6,6 +5,25 @@ from nltk_download_utils import * # see: https://blog.jcharistech.com/2020/12/14
 #nltk.download('stopwords', download_dir="nltk")
 import re
 import sys
+
+
+x = st.number_input("somme déposée")
+
+def calcul(x, t1, t2, R, t):
+    z = x*(1-t1)
+    y = (z*(1+R)**t)*(1-t2)
+    return y
+
+r = st.slider("Rendement des placements (%)", 0, 10, 1)
+R = r/100
+
+res = []
+for t in range (0, 20):
+    res.append(calcul(x, 0, 0.2, R, t) - calcul(x, 0.12, 0.3, R, t))
+
+import plotly.express as px
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 
 st.title("Text Summarizer")
 
