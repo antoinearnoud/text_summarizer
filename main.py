@@ -6,25 +6,6 @@ from nltk_download_utils import * # see: https://blog.jcharistech.com/2020/12/14
 import re
 import sys
 
-
-x = st.number_input("somme déposée")
-
-def calcul(x, t1, t2, R, t):
-    z = x*(1-t1)
-    y = (z*(1+R)**t)*(1-t2)
-    return y
-
-r = st.slider("Rendement des placements (%)", 0, 10, 1)
-R = r/100
-
-res = []
-for t in range (0, 20):
-    res.append(calcul(x, 0, 0.2, R, t) - calcul(x, 0.12, 0.3, R, t))
-
-import plotly.express as px
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
-
 st.title("Text Summarizer")
 
 intro = st.empty()
@@ -40,11 +21,10 @@ else:
     formatted_article_text = re.sub(r'\s+', ' ', formatted_article_text)
 
     # Tokenization
-    sentence_list = nltk.sent_tokenize(article_text)
+    sentence_list = nltk.sent_tokenize(article_text) # return list of sentences; "sent" is for sentence
 
     # Find Weighted Frequency of Occurrence
     stopwords = nltk.corpus.stopwords.words('english')
-
     word_frequencies = {}
     for word in nltk.word_tokenize(formatted_article_text):
         if word not in stopwords:
@@ -73,13 +53,12 @@ else:
 
 
     # Getting the Summary
-    nb_sentences = 7
+    #nb_sentences = 7
     nb_sentences = st.number_input("enter number of sentences for summary", min_value=1,  step=1)
+
     import heapq
     summary_sentences = heapq.nlargest(int(nb_sentences), sentence_scores, key=sentence_scores.get)
-
     summary = ' '.join(summary_sentences)
-    print(summary)
 
     st.success("Summary")
     st.write(summary)
